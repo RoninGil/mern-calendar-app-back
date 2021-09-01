@@ -24,4 +24,11 @@ const EventoSchema = Schema({
     }
 });
 
+EventoSchema.method('toJSON', function (){ //con esto cambiamos la muestra de _id a id
+    const {__v, _id, ...object} = this.toObject();
+    object.id = _id;
+    return object;
+
+})
+
 module.exports = model('Evento', EventoSchema);
